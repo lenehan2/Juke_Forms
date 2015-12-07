@@ -1,9 +1,12 @@
 <div>
-    <form >
-        <input ng-model="playlist.name">
-        <input type = "submit" value="New Playlist">
+    <form name="playlistForm" ng-submit="createAndReset(playlist)">
+        <input ng-required ng-maxlength="16" ng-model="playlist.name">
+        <input  ng-click="playlistForm.$setUntouched()"ng-disabled="!playlist.name" type = "submit" value="New Playlist">
     </form>
+    <button ng-click="resetForm()">Reset</button>
+    <div ng-show="!playlist.name && playlistForm.$dirty" class="alert alert-warning">Please enter a title</div>
     <div>
-        <p>The new playlist:<p> <pre>{{playlist | json}}</pre>
+        <p>The new playlist:<p> <pre>{{playlistForm | json}}</pre>
+
     </div>
 </div>

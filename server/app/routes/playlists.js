@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
 })
 
 router.post('/', function(req, res, next) {
+  console.log("We are here")
   mongoose.model('Playlist')
     .create(req.body)
     .then(function(playlist) {
