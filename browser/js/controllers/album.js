@@ -16,4 +16,15 @@ app.controller('AlbumCtrl', function ($scope, PlayerFactory, theAlbum) {
 		return 'mailto:?subject=' + $scope.album.name + '&body=' + link;
 	};
 
+	$scope.toFrequency = function (str) {
+    str = str || '';
+    return str.split('').reduce(function (freq, char) {
+        char = char.toLowerCase();
+        freq[char] = (freq[char] || 0);
+        freq[char]++;
+        return freq;
+   		 }, {});
+	};
+		$scope.alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
 });

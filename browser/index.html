@@ -24,6 +24,7 @@
 	<script src="/js/states/artist.js"></script>
 	<script src="/js/states/artist-albums.js"></script>
 	<script src="/js/states/artist-songs.js"></script>
+	<script src="/js/states/playlist-submit.js"></script>
 </head>
 <body ng-app="juke">
 	<div id="main" class="container-fluid">
@@ -44,7 +45,7 @@
 				<section>
 					<h4 class="text-muted">PLAYLISTS</h4>
 					<p>
-						<a class="btn btn-primary btn-block"><span class="glyphicon glyphicon-plus"></span> PLAYLIST</a>
+						<a ui-sref="playlist-submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-plus"></span> PLAYLIST</a>
 					</p>
 				</section>
 			</sidebar>
