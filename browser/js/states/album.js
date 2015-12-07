@@ -5,6 +5,7 @@ app.config(function ($stateProvider) {
 		controller: 'AlbumCtrl',
 		resolve: {
 			theAlbum: function (AlbumFactory, $stateParams) {
+				console.log($stateParams)
 				return AlbumFactory.fetchById($stateParams.albumId);
 			}
 		}

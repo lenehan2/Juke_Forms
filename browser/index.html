@@ -14,12 +14,14 @@
 	<script src="/js/controllers/player.js"></script>
 	<script src="/js/controllers/artist.js"></script>
 	<script src="/js/controllers/artists.js"></script>
+	<script src="/js/controllers/singlePlaylistCtrl.js"></script>
 	<script src="/js/controllers/playlistCtrl.js"></script>
 	<script src="/js/factories/player.js"></script>
 	<script src="/js/factories/album.js"></script>
 	<script src="/js/factories/song.js"></script>
 	<script src="/js/factories/artist.js"></script>
 	<script src="/js/factories/playlist-factory.js"></script>
+	<script src="/js/factories/single-playlist.js"></script>
 	<script src="/js/states/albums.js"></script>
 	<script src="/js/states/album.js"></script>
 	<script src="/js/states/artists.js"></script>
@@ -27,6 +29,8 @@
 	<script src="/js/states/artist-albums.js"></script>
 	<script src="/js/states/artist-songs.js"></script>
 	<script src="/js/states/playlist-submit.js"></script>
+	<script src="/js/states/playlistView.js"></script>
+
 </head>
 <body ng-app="juke">
 	<div id="main" class="container-fluid">
@@ -44,8 +48,12 @@
 					</h4>
 				</section>
 				<hr>
-				<section>
+				<section ng-controller = "PlaylistCtrl">
 					<h4 class="text-muted">PLAYLISTS</h4>
+					<p class="playlist-item" ng-repeat="playlist in playlists">
+  					<a ui-sref ="playlistView({playlistId: playlist._id})">{{playlist.name}}</a>
+					</p>
+
 					<p>
 						<a ui-sref="playlist-submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-plus"></span> PLAYLIST</a>
 					</p>
