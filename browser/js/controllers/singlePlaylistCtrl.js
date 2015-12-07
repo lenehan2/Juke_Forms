@@ -1,4 +1,4 @@
-app.controller('singlePlaylistCtrl',function($scope,SinglePlaylistFactory,thePlaylist){
+app.controller('singlePlaylistCtrl',function($scope,SinglePlaylistFactory,thePlaylist, SongFactory, theSongs, PlaylistFactory){
 
 	$scope.playlist = thePlaylist;
 
@@ -10,31 +10,22 @@ app.controller('singlePlaylistCtrl',function($scope,SinglePlaylistFactory,thePla
 		})
 	}
 
-	// $scope.isCurrent = function (playlist) {
-	// 	var current = PlayerFactory.getCurrentSong();
-	// 	return current && current._id == song._id;
-	// };
-	// $scope.start = function (song) {
-	// 	PlayerFactory.start(song, $scope.album.songs);
-	// };
+	$scope.songs = theSongs;
+	console.log($scope.songs)
 
-	// $scope.generateMailTo = function () {
-	// 	if (!$scope.album) return;
-	// 	var link = 'Check out this groovy album: http://localhost:1337/#/albums/' + $scope.album._id;
-	// 	return 'mailto:?subject=' + $scope.album.name + '&body=' + link;
-	// };
+	$scope.addSong = function(song, playlist){
+		PlaylistFactory.addSong(song, playlist)
+		.then(function(){
+			return SinglePlaylistFactory.getPlaylist(song._id)
+		})
+		.then(function(playlist){
+			console.log(playlist)
+		 });
+	}
 
-	// $scope.toFrequency = function (str) {
- //    str = str || '';
- //    return str.split('').reduce(function (freq, char) {
- //        char = char.toLowerCase();
- //        freq[char] = (freq[char] || 0);
- //        freq[char]++;
- //        return freq;
- //   		 }, {});
-	// };
-	
-
-
+	// SongFactory.getAllSongs()
+	// .then(function(songs){
+	// 	$scope.songs = songs;
+	// })
 
 })

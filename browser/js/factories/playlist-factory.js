@@ -28,5 +28,15 @@ app.factory('PlaylistFactory', function ($http, $rootScope) {
 		})
 	}
 
+	PlaylistFactory.addSong = function(song, playlist){
+		return $http({
+			url: "./api/playlists/" + playlist + "/songs",
+			method: "POST",
+			data: {
+				song: song
+			}
+		});
+	}
+
 	return PlaylistFactory;
 });

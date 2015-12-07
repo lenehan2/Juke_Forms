@@ -24,4 +24,11 @@
     </table>
     <small ng-hide="playlist.songs.length">No songs.</small>
     <hr>
+    <h3>Add to Playlist</h3>
+    <form name="songsForm" ng-submit="addSong(selected, playlist._id)">
+    Songs: <select required class="form-control"  ng-options="song as song.name for song in songs track by song._id" value="song._id" ng-model="selected"></select>
+    <br>
+    <input type="submit" ng-disabled="!songsForm.$dirty"></input>
+    </form>
+    {{selected}}
 </div>
